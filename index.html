@@ -23,7 +23,7 @@
         </header>
 
         <!-- Selection Card -->
-        <div class="container">
+        <div class="container invisible">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -35,21 +35,44 @@
                                         <h1 class="display-4 font-Header">Character Selection</h1>
                                     </div>
                                 </div>
-                                <div class="row ">
-                                    <div class="col-lg-2">  
-                                        <img src="assets/Images/pikachu-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="A">
-                                    </div>
-                                    <div class="col-lg-2">  
-                                        <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="B">
-                                    </div>
-                                    <div class="col-lg-2">  
-                                        <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="C">
-                                    </div>
-                                    <div class="col-lg-2">  
-                                        <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="D">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="row ">
+                                            <div class="col-lg-12">
+                                                <p class="font-CharNames">Choose your character!</p>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-lg-3">  
+                                                <img src="assets/Images/pikachu-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="A">
+                                            </div>
+                                            <div class="col-lg-3">  
+                                                <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="B">
+                                            </div>
+                                            <div class="col-lg-3">  
+                                                <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="C">
+                                            </div>
+                                            <div class="col-lg-3">  
+                                                <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="D">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-4">  
-                                       <p class="font-CharNames">Choose your character!</p>
+                                       <div class="row">
+                                           <div class="col-md-12">
+                                                <p class="font-CharNames text-center invisible" id="chosenLbl">You Chose:</p>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                            <div class="col-md-12">
+                                                <img class="card-img-top" id="charSel">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                    <a href="" type="button" class="btn btn-success " id="startBtn">Start The Game</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +81,65 @@
                 </div>
             </div>
         </div>
-        
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <img src="assets/Images/Grassy-field-fighting-field.png" class="card-img-top" alt="...">
+                            <div class="card-img-overlay ">
+                                <div class="container">
+                                    <div class="row ">
+                                        <div class="col-lg-12">
+                                            <h1 class="display-4 font-Header">Battlefield</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="row ">
+                                                <div class="col-lg-12">
+                                                    <p class="font-CharNames">Choose your enemy!</p>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-lg-3">  
+                                                    <img src="assets/Images/pikachu-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="A">
+                                                </div>
+                                                <div class="col-lg-3">  
+                                                    <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="B">
+                                                </div>
+                                                <div class="col-lg-3">  
+                                                    <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="C">
+                                                </div>
+                                                <div class="col-lg-3">  
+                                                    <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="D">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">  
+                                           <div class="row">
+                                               <div class="col-md-12">
+                                                    <p class="font-CharNames text-center invisible" id="chosenLbl">You Chose:</p>
+                                               </div>
+                                           </div>
+                                           <div class="row">
+                                                <div class="col-md-12">
+                                                    <img class="card-img-top" id="enmySel">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                        <a href="" type="button" class="btn btn-success " id="startBtn">Start The Game</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -2,10 +2,51 @@ $(document).ready(function() {
     
     var gameObj = {
 
-        onClickChar : function(charClicked){
-            charClicked = $(charClicked).attr("data-letter");
+        charChosen : null, //Character chosen by user
 
-            console.log(charClicked);
+        onCharSel : function(characterID){
+            charClicked = $(characterID).attr("data-letter");
+            if (charClicked === "A"){
+                this.charChosen = "Pikachu";
+                $("#charSel").attr("src","assets/Images/pikachu-Transparent.png");
+            }
+            else if (charClicked === "B"){
+                this.charChosen = "Magikarp";
+                $("#charSel").attr("src","assets/Images/Magikarp-Transparent.png");
+            }
+            else if (charClicked === "C"){
+                this.charChosen = "Ampharos";
+                $("#charSel").attr("src","assets/Images/Ampharos-Transparent.png");
+            }
+            else{
+                this.charChosen = "Wooloo";
+                $("#charSel").attr("src","assets/Images/Wooloo-Transparent.png");
+            }
+            $("#startBtn").removeClass("invisible");
+            $("#chosenLbl").removeClass("invisible");
+        },
+
+        onEnmySel : function(characterID){
+            charClicked = $(characterID).attr("data-letter");
+            if (charClicked === "A"){
+                this.charChosen = "Pikachu";
+                $("#enmySel").attr("src","assets/Images/pikachu-Transparent.png");
+            }
+            else if (charClicked === "B"){
+                this.charChosen = "Magikarp";
+                $("#enmySel").attr("src","assets/Images/Magikarp-Transparent.png");
+            }
+            else if (charClicked === "C"){
+                this.charChosen = "Ampharos";
+                $("#enmySel").attr("src","assets/Images/Ampharos-Transparent.png");
+            }
+            else{
+                this.charChosen = "Wooloo";
+                $("#enmySel").attr("src","assets/Images/Wooloo-Transparent.png");
+            }
+        },
+        onStart : function() {
+
         }
     }
     
@@ -19,6 +60,9 @@ $(document).ready(function() {
         $(this).css("background","");
     });
     $(".charImg").on("click", function(){
-        gameObj.onClickChar(this);
+        gameObj.onCharSel(this);
+    });
+    $(".enmyImg").on("click", function(){
+        gameObj.onEnmySel(this);
     });
 });
