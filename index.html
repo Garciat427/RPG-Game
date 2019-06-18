@@ -23,7 +23,7 @@
         </header>
 
         <!-- Selection Card -->
-        <div class="container invisible">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -65,12 +65,12 @@
                                        </div>
                                        <div class="row">
                                             <div class="col-md-12">
-                                                <img class="card-img-top" id="charSel">
+                                                <img class="card-img-top" id="charSel1">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                    <a href="" type="button" class="btn btn-success " id="startBtn">Start The Game</a>
+                                                    <button type="button" class="btn btn-success invisible " id="startBtn">Start The Game</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,6 +81,7 @@
                 </div>
             </div>
         </div>
+        <!-- Enemy Card -->
         <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -94,43 +95,50 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="row ">
-                                                <div class="col-lg-12">
-                                                    <p class="font-CharNames">Choose your enemy!</p>
+                                        <!-- Screen Column-->
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <!-- Labels and ops left side-->
+                                                <div class="col-md-8">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12">
+                                                            <p class="font-CharNames">Choose your enemy!</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row pb-5">
+                                                        <div class="col-lg-2" id="enmyA">  
+                                                            <img src="assets/Images/pikachu-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="A">
+                                                        </div>
+                                                        <div class="col-lg-2" id="enmyB">  
+                                                            <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="B">
+                                                        </div>
+                                                        <div class="col-lg-2" id="enmyC">  
+                                                            <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="C">
+                                                        </div>
+                                                        <div class="col-lg-2" id="enmyD">  
+                                                            <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="D">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row ">
-                                                <div class="col-lg-3">  
-                                                    <img src="assets/Images/pikachu-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="A">
-                                                </div>
-                                                <div class="col-lg-3">  
-                                                    <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="B">
-                                                </div>
-                                                <div class="col-lg-3">  
-                                                    <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="C">
-                                                </div>
-                                                <div class="col-lg-3">  
-                                                    <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="D">
+                                                <!-- Enemy Card right side-->
+                                                <div class="col-lg-4 ml-n5">  
+                                                    <div class="row pt-5">
+                                                            <div class="col-md-7">
+                                                                <img class="card-img-top" id="enmySel">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">  
-                                           <div class="row">
-                                               <div class="col-md-12">
-                                                    <p class="font-CharNames text-center invisible" id="chosenLbl">You Chose:</p>
-                                               </div>
-                                           </div>
-                                           <div class="row">
-                                                <div class="col-md-12">
-                                                    <img class="card-img-top" id="enmySel">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                        <a href="" type="button" class="btn btn-success " id="startBtn">Start The Game</a>
-                                                </div>
-                                            </div>
+                                        
+                                        
+                                    
+                                    <!-- Current Character -->
+                                    <div class="row mt-n5">
+                                        <div class="col-md-2"></div> <!-- Spacer -->
+                                        <div class="col-md-3">
+                                            <img src="" class="card-img-top enmyImg" id="charSel2">
                                         </div>
                                     </div>
                                 </div>
