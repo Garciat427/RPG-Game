@@ -4,30 +4,31 @@ $(document).ready(function() {
         playerChosen : null,            //Character chosen by user
         playerHP : null,                //Character HP
         playerHPBar : $("#playerHP"),   //Character HP Bar
-        enemyChosen : null,              //Current Enemy
-        enemyHP: null,                   //Enemy HP
-        enemyHPBar : $("#enemyHP"),       //Enemy HP Bar
+        enemyChosen : null,             //Current Enemy
+        enemyHP: null,                  //Enemy HP
+        enemyHPBar : $("#enemyHP"),     //Enemy HP Bar
+        dmgSel : null,                  //Sel correct Dmg Set
 
         //Character Objs
+        wooloo : {
+            hp : 100,
+            attackInt :8,
+            dmg : [8,5,5,5]
+        },
         pikachu : {
             hp : 120,
             attackInt : 8,
-            dmg : 8,
-        },
-        magikarp : {
-            hp : 180,
-            attackInt : 8,
-            dmg : 5,
+            dmg : [5,8,25,30]
         },
         ampharos : {
             hp : 150,
             attackInt : 8,
-            dmg : null,
+            dmg : [15,20,8,35]
         },
-        wooloo : {
-            hp : 100,
+        magikarp : {
+            hp : 180,
             attackInt : 8,
-            dmg : null,
+            dmg : [20,25,30,8]
         },
 
 
@@ -36,18 +37,21 @@ $(document).ready(function() {
             $("#charSel1").css({ opacity : 0 });
             
             if (charClicked === "A"){
+                this.dmgSel = 1;
                 this.playerChosen = this.pikachu; //Set Char
                 //Set Obj Images
                 $("#charSel1").attr("src","assets/Images/Characters/pikachu-Transparent.png");
                 $("#charSel2").attr("src","assets/Images/Characters/pikachu-Transparent.png");
             }
             else if (charClicked === "B"){
+                this.dmgSel = 3;
                 this.playerChosen = this.magikarp;//Set Char
                 //Set Obj Images
                 $("#charSel1").attr("src","assets/Images/Characters/Magikarp-Transparent.png");
                 $("#charSel2").attr("src","assets/Images/Characters/Magikarp-Transparent.png");
             }
             else if (charClicked === "C"){
+                this.dmgSel = 2;
                 this.playerChosen = this.ampharos;//Set Char
                 //Set Obj Images
                 $("#charSel1").attr("src","assets/Images/Characters/Ampharos-Transparent.png");
@@ -55,6 +59,7 @@ $(document).ready(function() {
             }
             else{
                 this.playerChosen = this.wooloo;//Set Char
+                this.dmgSel = 0;
                 //Set Obj Images
                 $("#charSel1").attr("src","assets/Images/Characters/Wooloo-Transparent.png");
                 $("#charSel2").attr("src","assets/Images/Characters/Wooloo-Transparent.png");
@@ -87,8 +92,6 @@ $(document).ready(function() {
         onenemySel : function(characterID){
             var enemyClicked = $(characterID).attr("data-letter");
             if (enemyClicked !== "F"){
-                
-
                 if (enemyClicked === "A"){
                     this.enemyChosen = this.pikachu;
                     $("#enemySel").attr("src","assets/Images/Characters/pikachu-Transparent.png");
@@ -111,6 +114,7 @@ $(document).ready(function() {
                 $("#charSel2").animate({ opacity: "1" });       //Make Player Visible
                 $("#gameStatusCard").animate({ opacity: "1" }); //Make Game status Visible
                 $("#status").text("Press Attack to fight!");    //Change Game status Text
+                $("#atkBtn").attr("disabled",false);            //Enable Attack Button
 
                 this.enemyHP = this.enemyChosen.hp;
             }
@@ -118,28 +122,17 @@ $(document).ready(function() {
 
         runUpdate : function() {
             var percentHP;
-            console.log("");
-            console.log("-----------------Log----------------------");
-            console.log("Current Player Dmg: " + this.playerChosen.dmg);
-            console.log("Current Player Starting HP: " + this.playerChosen.hp);
-            console.log("Current Player HP: " + this.playerHP);
-            console.log("-----------------");
-            console.log("Current Enemy Dmg: " + this.enemyChosen.dmg);
-            console.log("Current Enemy Starting HP: " + this.enemyChosen.hp);
-            console.log("Current Enemy HP: " + this.enemyHP);
-            console.log("-----------------");
             
-            console.log("Player attacked");
-            this.enemyHP -= this.playerChosen.dmg; //Player Attacks
-            console.log("Current Enemy HP: " + this.enemyHP);
+            this.enemyHP -= this.playerChosen.dmg[this.dmgSel]; //Player Attacks
 
             if (this.enemyHP <= 0){     //If enemy hp <= 0 (Enemy Lost)
                 
                 $("#enemySelection").animate({ opacity: "1" });     //Show Enemy Select
                 $("#status").text("Choose Your next enemy!");       //Change Game status Text
                 $("#gameStatusCard").animate({ opacity: "0" });     //Hide Game Status
-                $("#charSel2").animate({ opacity: "0" });           //Hide Character
-                $("#enemySel").animate({ opacity: "0" });          //Hide Enemy
+                $("#charSel2").animate({ opacity: "0.5" });         //Hide Character
+                $("#enemySel").animate({ opacity: "0" });           //Hide Enemy
+                $("#atkBtn").attr("disabled",true);
 
                 if (this.enemyChosen === this.pikachu){
                     console.log("pikachu");
@@ -164,12 +157,13 @@ $(document).ready(function() {
             }
             else{                       //Else Enemy Proceeds With attack
                 console.log("Enemy attacked");
-                this.playerHP -= this.enemyChosen.dmg;
+                this.playerHP -= this.enemyChosen.dmg[this.dmgSel];
                 console.log("Current Player HP: " + this.playerHP);
 
                 if (this.playerHP <= 0){ //If Player hp <= 0 (Player Lost)
-                    console.log("Player Lost");
-                    this.progressUpdate(this.playerHPBar,0)
+                    $("#charSel2").animate({ opacity: "0" });
+                    $("#status").text("You Lost!");
+                    this.progressUpdate(this.playerHPBar,-1)
                 }
                 else{
                     console.log("Regular Run");
@@ -183,11 +177,14 @@ $(document).ready(function() {
                 }
             }
             //Increase Player Dmg
-            this.playerChosen.dmg += this.playerChosen.attackInt;
+            this.playerChosen.dmg[this.dmgSel] += this.playerChosen.attackInt;
         },
         progressUpdate : function(selCharBar,percentHP) {
-            if (percentHP === 0){ //If dead then Reset bar
+            if (percentHP === 0){ //If enemy dead then Reset bar
                 percentHP = 100
+            }
+            else if (percentHP === -1){ //If player dead then keep 0
+                percentHP = 0
             }   
             selCharBar.attr("style", "width: " + percentHP + "%");
         },
