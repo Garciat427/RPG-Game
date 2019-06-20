@@ -23,11 +23,11 @@
         </header>
 
         <!-- Selection Card -->
-        <div class="container">
+        <div class="container" id="selectionCard">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <img src="assets/Images/Pikachu-Selection-Background.jpg" class="card-img-top" alt="...">
+                        <img src="assets/Images/Backgrounds/Pikachu-Selection-Background.jpg" class="card-img-top" alt="...">
                         <div class="card-img-overlay ">
                             <div class="container">
                                 <div class="row ">
@@ -44,33 +44,33 @@
                                         </div>
                                         <div class="row ">
                                             <div class="col-lg-3">  
-                                                <img src="assets/Images/pikachu-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="A">
+                                                <img src="assets/Images/Characters/pikachu-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="A">
                                             </div>
                                             <div class="col-lg-3">  
-                                                <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="B">
+                                                <img src="assets/Images/Characters/Magikarp-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="B">
                                             </div>
                                             <div class="col-lg-3">  
-                                                <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="C">
+                                                <img src="assets/Images/Characters/Ampharos-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="C">
                                             </div>
                                             <div class="col-lg-3">  
-                                                <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="D">
+                                                <img src="assets/Images/Characters/Wooloo-Transparent.png" class="card-img-top charImg" alt="Pikachu" data-letter="D">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">  
                                        <div class="row">
                                            <div class="col-md-12">
-                                                <p class="font-CharNames text-center invisible" id="chosenLbl">You Chose:</p>
+                                                <p class="font-CharNames text-center" style="opacity: 0" id="chosenLbl">You Chose:</p>
                                            </div>
                                        </div>
                                        <div class="row">
                                             <div class="col-md-12">
-                                                <img class="card-img-top" id="charSel1">
+                                                <img class="card-img-top" style="opacity: 0" id="charSel1">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                    <button type="button" class="btn btn-success invisible " id="startBtn">Start The Game</button>
+                                                    <button type="button" class="btn btn-success" style="opacity: 0" id="startBtn">Start The Game</button>
                                             </div>
                                         </div>
                                     </div>
@@ -81,12 +81,12 @@
                 </div>
             </div>
         </div>
-        <!-- Enemy Card -->
-        <div class="container">
+        <!-- Battlefield Card -->
+        <div class="container invisible" id="battlefieldCard">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <img src="assets/Images/Grassy-field-fighting-field.png" class="card-img-top" alt="...">
+                            <img src="assets/Images/Backgrounds/Grassy-field-fighting-field.png" class="card-img-top" alt="...">
                             <div class="card-img-overlay ">
                                 <div class="container">
                                     <div class="row ">
@@ -102,53 +102,66 @@
                                                 <div class="col-md-8">
                                                     <div class="row ">
                                                         <div class="col-lg-12">
-                                                            <p class="font-CharNames">Choose your enemy!</p>
+                                                            <p class="font-CharNames" id="status">Choose your enemy!</p>
                                                         </div>
                                                     </div>
-                                                    <div class="row pb-5">
-                                                        <div class="col-lg-2" id="enmyA">  
-                                                            <img src="assets/Images/pikachu-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="A">
+                                                    <!-- Enemy Selection Btns -->
+                                                    <div class="row" id="enemySelection">
+                                                        <div class="col-lg-3" id="enemyA">  
+                                                            <img src="assets/Images/Characters/pikachu-Transparent.png" class="card-img-top enemyImg" id="enemyAimg" alt="Pikachu" data-letter="A">
                                                         </div>
-                                                        <div class="col-lg-2" id="enmyB">  
-                                                            <img src="assets/Images/Magikarp-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="B">
+                                                        <div class="col-lg-3" id="enemyB">  
+                                                            <img src="assets/Images/Characters/Magikarp-Transparent.png" class="card-img-top enemyImg"  id="enemyBimg"alt="Magikarp" data-letter="B">
                                                         </div>
-                                                        <div class="col-lg-2" id="enmyC">  
-                                                            <img src="assets/Images/Ampharos-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="C">
+                                                        <div class="col-lg-3" id="enemyC">  
+                                                            <img src="assets/Images/Characters/Ampharos-Transparent.png" class="card-img-top enemyImg" id="enemyCimg"alt="Ampharos" data-letter="C">
                                                         </div>
-                                                        <div class="col-lg-2" id="enmyD">  
-                                                            <img src="assets/Images/Wooloo-Transparent.png" class="card-img-top enmyImg" alt="Pikachu" data-letter="D">
+                                                        <div class="col-lg-3" id="enemyD">  
+                                                            <img src="assets/Images/Characters/Wooloo-Transparent.png" class="card-img-top  enemyImg" id="enemyDimg" alt="Wooloo" data-letter="D">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- Enemy Card right side-->
+                                                <!-- Current Enemy-->
                                                 <div class="col-lg-4 ml-n5">  
                                                     <div class="row pt-5">
-                                                            <div class="col-md-7">
-                                                                <img class="card-img-top" id="enmySel">
+                                                            <div class="col-md-7" id="enemyCard">
+                                                                <!-- Image for Enemy -->
+                                                                <img class="card-img-top" style="opacity: 0" id="enemySel">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    <!-- Current Character -->
+                                    <!-- Current player and game info -->
                                     <div class="row mt-n5">
                                         <div class="col-md-2"></div> <!-- Spacer -->
                                         <div class="col-md-3">
-                                            <img src="" class="card-img-top enmyImg" id="charSel2">
+                                            <!-- Image for current Player -->
+                                            <img src="" class="card-img-top" style="opacity: 0" id="charSel2">
                                         </div>
-                                        <div class="col-md-7 pt-5">
 
-                                                <div class="row pt-5"></div>
-                                                <div class="row pt-5"></div>
-                                                
-                                            <div class="row p-6">
-                                                    <div class="card mt-5">
-                                                            <div class="card-body">
-                                                                This is some text within a card body.
+                                        <!-- Info Card -->
+                                        <div class="col-md-2"></div> <!-- Spacer -->
+                                        <div class="col-md-5 pt-5">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="card mt-5 width-5 text-center text-white bg-dark" style="opacity: 0" id="gameStatusCard">
+                                                        <div class="card-body">
+                                                            <p class="text-left">Player HP</p> 
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" id="playerHP" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                                                             </div>
+                                                            <p class="text-left">Enemy HP</p>
+                                                            <div class="progress">
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" id="enemyHP" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-success mt-2" id="atkBtn">Attack</button>
                                                         </div>
-                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
                                         </div>
                                     </div>
                                 </div>
@@ -159,7 +172,7 @@
             </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
