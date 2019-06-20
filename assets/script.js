@@ -108,15 +108,15 @@ $(document).ready(function() {
                     this.enemyChosen = this.wooloo;
                     $("#enemySel").attr("src","assets/Images/Characters/Wooloo-Transparent.png");
                 }
-
+                this.enemyHP = this.enemyChosen.hp;
                 $("#enemySelection").animate({ opacity: "0" }); //Make enemySel Invisible
                 $("#enemySel").animate({ opacity: "1" });       //Make Enemy Visible
                 $("#charSel2").animate({ opacity: "1" });       //Make Player Visible
                 $("#gameStatusCard").animate({ opacity: "1" }); //Make Game status Visible
                 $("#status").text("Press Attack to fight!");    //Change Game status Text
                 $("#atkBtn").attr("disabled",false);            //Enable Attack Button
-
-                this.enemyHP = this.enemyChosen.hp;
+                $("#enemyHPText").text(this.enemyHP);
+                $("#playerHPText").text(this.playerHP);
             }
         },
 
@@ -124,10 +124,8 @@ $(document).ready(function() {
             var percentHP;
             
             this.enemyHP -= this.playerChosen.dmg[this.dmgSel]; //Player Attacks
-            $("#enemyHPText").text(this.enemyHP);
-
             if (this.enemyHP <= 0){     //If enemy hp <= 0 (Enemy Lost)
-                
+                $("#enemyHPText").text(0);
                 $("#enemySelection").animate({ opacity: "1" });     //Show Enemy Select
                 $("#status").text("Choose Your next enemy!");       //Change Game status Text
                 $("#gameStatusCard").animate({ opacity: "0" });     //Hide Game Status
@@ -154,21 +152,28 @@ $(document).ready(function() {
                 this.progressUpdate("E",0)
             }
             else{                       //Else Enemy Proceeds With attack
+                
                 this.playerHP -= this.enemyChosen.dmg[this.dmgSel];
-                $("#playerHPText").text(this.playerHP);
+                
 
                 if (this.playerHP <= 0){ //If Player hp <= 0 (Player Lost)
+                    $("#playerHPText").text(0);
                     $("#charSel2").animate({ opacity: "0" });
                     $("#status").text("You Lost!");
+                    $("#atkBtn").attr("disabled",true);
                     this.progressUpdate("P",-1)
                 }
                 else{
+                    
+
                     percentHP = ((this.enemyHP / this.enemyChosen.hp) * 100); //Calculate Percentage
                     this.progressUpdate("E",percentHP);
+                    $("#enemyHPText").text(this.enemyHP);
                     
                     //Calculate and update Player HP
                     percentHP = ((this.playerHP / this.playerChosen.hp) * 100); //Calculate Percentage
                     this.progressUpdate("P",percentHP);
+                    $("#playerHPText").text(this.playerHP);
                 }
             }
             //Increase Player Dmg
@@ -179,11 +184,9 @@ $(document).ready(function() {
                 var selCharBar = $("#playerHP");
                 if (percentHP === -1) //If player dead then keep 0
                     percentHP = 0;
-                $("#playerHPPercent").text(Math.trunc( percentHP ));
             }
             else{ //Else Enemy Bar
                 var selCharBar = $("#enemyHP");
-                $("#enemyHPPercent").text(Math.trunc( percentHP ));
                 if (percentHP === 0) //If enemy dead then Reset bar
                     percentHP = 100;
             }
