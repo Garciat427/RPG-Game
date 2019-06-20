@@ -124,6 +124,7 @@ $(document).ready(function() {
             var percentHP;
             
             this.enemyHP -= this.playerChosen.dmg[this.dmgSel]; //Player Attacks
+            $("#enemyHPText").text(this.enemyHP);
 
             if (this.enemyHP <= 0){     //If enemy hp <= 0 (Enemy Lost)
                 
@@ -150,42 +151,42 @@ $(document).ready(function() {
                     console.log("pikachu");
                     $("#enemyDimg").attr("src","assets/Images/Characters/Wooloo-Transparent-X.png").attr("data-letter","F")
                 }
-
-                
-                
-                this.progressUpdate(this.enemyHPBar,0)
+                this.progressUpdate("E",0)
             }
             else{                       //Else Enemy Proceeds With attack
-                console.log("Enemy attacked");
                 this.playerHP -= this.enemyChosen.dmg[this.dmgSel];
-                console.log("Current Player HP: " + this.playerHP);
+                $("#playerHPText").text(this.playerHP);
 
                 if (this.playerHP <= 0){ //If Player hp <= 0 (Player Lost)
                     $("#charSel2").animate({ opacity: "0" });
                     $("#status").text("You Lost!");
-                    this.progressUpdate(this.playerHPBar,-1)
+                    this.progressUpdate("P",-1)
                 }
                 else{
-                    console.log("Regular Run");
-                    //Calculate and update Enemy HP
                     percentHP = ((this.enemyHP / this.enemyChosen.hp) * 100); //Calculate Percentage
-                    this.progressUpdate(this.enemyHPBar,percentHP);
+                    this.progressUpdate("E",percentHP);
                     
                     //Calculate and update Player HP
                     percentHP = ((this.playerHP / this.playerChosen.hp) * 100); //Calculate Percentage
-                    this.progressUpdate(this.playerHPBar,percentHP);
+                    this.progressUpdate("P",percentHP);
                 }
             }
             //Increase Player Dmg
             this.playerChosen.dmg[this.dmgSel] += this.playerChosen.attackInt;
         },
-        progressUpdate : function(selCharBar,percentHP) {
-            if (percentHP === 0){ //If enemy dead then Reset bar
-                percentHP = 100
+        progressUpdate : function(selChar,percentHP) {
+            if (selChar === "P"){ //If Player bar
+                var selCharBar = $("#playerHP");
+                if (percentHP === -1) //If player dead then keep 0
+                    percentHP = 0;
+                $("#playerHPPercent").text(Math.trunc( percentHP ));
             }
-            else if (percentHP === -1){ //If player dead then keep 0
-                percentHP = 0
-            }   
+            else{ //Else Enemy Bar
+                var selCharBar = $("#enemyHP");
+                $("#enemyHPPercent").text(Math.trunc( percentHP ));
+                if (percentHP === 0) //If enemy dead then Reset bar
+                    percentHP = 100;
+            }
             selCharBar.attr("style", "width: " + percentHP + "%");
         },
     }
