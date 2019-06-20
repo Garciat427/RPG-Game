@@ -1,12 +1,11 @@
 $(document).ready(function() {
     var gameObj = {
 
+        wins :  0,
         playerChosen : null,            //Character chosen by user
         playerHP : null,                //Character HP
-        playerHPBar : $("#playerHP"),   //Character HP Bar
         enemyChosen : null,             //Current Enemy
         enemyHP: null,                  //Enemy HP
-        enemyHPBar : $("#enemyHP"),     //Enemy HP Bar
         dmgSel : null,                  //Sel correct Dmg Set
 
         //Character Objs
@@ -86,7 +85,7 @@ $(document).ready(function() {
             else{
                 $("#enemyD").remove();
             }
-            this.playerHPBar.attr("style", "width: 100%");
+            $("#playerHP").attr("style", "width: 100%");
         },
 
         onenemySel : function(characterID){
@@ -125,37 +124,43 @@ $(document).ready(function() {
             
             this.enemyHP -= this.playerChosen.dmg[this.dmgSel]; //Player Attacks
             if (this.enemyHP <= 0){     //If enemy hp <= 0 (Enemy Lost)
-                $("#enemyHPText").text(0);
-                $("#enemySelection").animate({ opacity: "1" });     //Show Enemy Select
-                $("#status").text("Choose Your next enemy!");       //Change Game status Text
-                $("#gameStatusCard").animate({ opacity: "0" });     //Hide Game Status
-                $("#charSel2").animate({ opacity: "0.5" });         //Hide Character
-                $("#enemySel").animate({ opacity: "0" });           //Hide Enemy
-                $("#atkBtn").attr("disabled",true);
-
-                if (this.enemyChosen === this.pikachu){
-                    console.log("pikachu");
-                    $("#enemyAimg").attr("src","assets/Images/Characters/pikachu-Transparent-X.png").attr("data-letter","F")
-                }
-                else if (this.enemyChosen === this.magikarp){
-                    console.log("magikarp");
-                    $("#enemyBimg").attr("src","assets/Images/Characters/Magikarp-Transparent-X.png").attr("data-letter","F")
-                }
-                else if (this.enemyChosen === this.ampharos){
-                    console.log("ampharos");
-                    $("#enemyCimg").attr("src","assets/Images/Characters/Ampharos-Transparent-X.png").attr("data-letter","F")
+                this.wins ++;
+                if (this.wins === 3){
+                    $("#playerHPText").text(0);
+                    $("#enemySel").animate({ opacity: "0" });
+                    $("#status").text("You Won!");
+                    $("#atkBtn").attr("disabled",true);
                 }
                 else{
-                    console.log("pikachu");
-                    $("#enemyDimg").attr("src","assets/Images/Characters/Wooloo-Transparent-X.png").attr("data-letter","F")
+                    $("#enemyHPText").text(0);
+                    $("#enemySelection").animate({ opacity: "1" });     //Show Enemy Select
+                    $("#status").text("Choose Your next enemy!");       //Change Game status Text
+                    $("#gameStatusCard").animate({ opacity: "0" });     //Hide Game Status
+                    $("#charSel2").animate({ opacity: "0.5" });         //Hide Character
+                    $("#enemySel").animate({ opacity: "0" });           //Hide Enemy
+                    $("#atkBtn").attr("disabled",true);
+
+                    if (this.enemyChosen === this.pikachu){
+                        console.log("pikachu");
+                        $("#enemyAimg").attr("src","assets/Images/Characters/pikachu-Transparent-X.png").attr("data-letter","F");
+                    }
+                    else if (this.enemyChosen === this.magikarp){
+                        console.log("magikarp");
+                        $("#enemyBimg").attr("src","assets/Images/Characters/Magikarp-Transparent-X.png").attr("data-letter","F");
+                    }
+                    else if (this.enemyChosen === this.ampharos){
+                        console.log("ampharos");
+                        $("#enemyCimg").attr("src","assets/Images/Characters/Ampharos-Transparent-X.png").attr("data-letter","F");
+                    }
+                    else{
+                        console.log("pikachu");
+                        $("#enemyDimg").attr("src","assets/Images/Characters/Wooloo-Transparent-X.png").attr("data-letter","F");
+                    } 
                 }
-                this.progressUpdate("E",0)
+                this.progressUpdate("E",0);
             }
             else{                       //Else Enemy Proceeds With attack
-                
                 this.playerHP -= this.enemyChosen.dmg[this.dmgSel];
-                
-
                 if (this.playerHP <= 0){ //If Player hp <= 0 (Player Lost)
                     $("#playerHPText").text(0);
                     $("#charSel2").animate({ opacity: "0" });
